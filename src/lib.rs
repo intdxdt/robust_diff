@@ -20,6 +20,7 @@ fn linear_expansion(e: &[f64], f: &[f64]) -> Vec<f64> {
     let mut fi = -f[fptr];
     let mut fa = fi.abs();
     let (mut a, mut b): (f64, f64);
+
     if ea < fa {
         b = ei;
         eptr += 1;
