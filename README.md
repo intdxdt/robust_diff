@@ -1,2 +1,2 @@
-# robust_diff
-robust difference/subtraction in rust
+# robust_subtract
+robust subtraction in rust
