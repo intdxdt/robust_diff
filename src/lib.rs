@@ -167,21 +167,22 @@ fn scalar_scalar(a: f64, b: f64) -> Vec<f64> {
 #[cfg(test)]
 mod robust_sub_test {
     extern crate rand;
+    extern crate validate_robust_seq;
+    use self::validate_robust_seq::validate_sequence as validate;
 
     use super::robust_subtract;
 
-    fn gen() -> f64 {
+    fn rnd() -> f64 {
         rand::random::<f64>()
     }
 
     #[test]
     fn test_robust_sub() {
         assert_eq!(robust_subtract(&vec!(1.), &vec!(1.)), [0.]);
-
         let mut s = vec!(0.);
         for _ in 0..100 {
-            s = robust_subtract(&s, &vec!(gen() * 2f64.powf(gen() * 1000.)))
-            //            t.ok(validate(s))
+            s = robust_subtract(&s, &vec!(rnd() * 2f64.powf(rnd() * 1000.)));
+            assert!(validate(&s));
         }
     }
 }
